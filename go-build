@@ -10,9 +10,11 @@ if [ -f /gopath/src/app/.godir ]; then
     GODIR=$(cat /gopath/src/app/.godir)
     mkdir -p /gopath/src/$(dirname ${GODIR})
     ln -s /gopath/src/app /gopath/src/${GODIR}
+    cd /gopath/src/${GODIR}
+else
+    cd /gopath/src/app
 fi
 
-cd /gopath/src/app
 if [ -f /gopath/src/app/Godeps ]; then
     godep go install
 else
