@@ -2,7 +2,7 @@
 
 set -e
 
-if [ if /gopath/src/app/Godeps]; then
+if [ -f /gopath/src/app/Godeps ]; then
     go get github.com/kr/godep
 fi
 
@@ -13,7 +13,7 @@ if [ -f /gopath/src/app/.godir ]; then
 fi
 
 cd /gopath/src/app
-if [ -f /gopath/src/app/Godeps]; then
+if [ -f /gopath/src/app/Godeps ]; then
     godep go install
 else
     go get
