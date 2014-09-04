@@ -2,11 +2,19 @@
 
 set -e
 
+if [ if /gopath/src/app/Godeps]; then
+    go get github.com/kr/godep
+fi
+
 if [ -f /gopath/src/app/.godir ]; then
     GODIR=$(cat /gopath/src/app/.godir)
     mkdir -p /gopath/src/$(dirname ${GODIR})
     ln -s /gopath/src/app /gopath/src/${GODIR}
-    godep go get ${GODIR}
+fi
+
+cd /gopath/src/app
+if [ -f /gopath/src/app/Godeps]; then
+    godep go install
 else
-    godep go get app
+    go get
 fi
