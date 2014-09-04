@@ -20,6 +20,8 @@ ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 ADD go-build /bin/go-build
 ADD go-run /bin/go-run
 
+RUN go get github.com/kr/godep
+
 ONBUILD ADD . /gopath/src/app/
 ONBUILD RUN /bin/go-build
 
